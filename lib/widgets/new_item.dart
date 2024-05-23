@@ -11,9 +11,12 @@ class NewItemScreen extends StatefulWidget {
 
 class _NewItemState extends State<NewItemScreen> {
   final _formkey = GlobalKey<FormState>();
+  var _enteredName = '';
 
   void _saveItem() {
-    _formkey.currentState!.validate();
+    if (_formkey.currentState!.validate()) {
+      _formkey.currentState!.save();
+    }
   }
 
   @override
@@ -39,6 +42,12 @@ class _NewItemState extends State<NewItemScreen> {
                       return 'Must be between 1 and 50 charachters';
                     }
                     return null; // if valid.
+                  },
+                  onSaved: (value) {
+                    // if (value == null) {
+                    //   return;
+                    // }
+                    _enteredName = value!;
                   },
                 ),
                 Row(
@@ -88,7 +97,7 @@ class _NewItemState extends State<NewItemScreen> {
                   children: [
                     TextButton(
                         onPressed: () {
-                          _formkey.currentState!.reset();
+                          _formkey.currentState!.reset(); // resets the input
                         },
                         child: const Text('Reset')),
                     ElevatedButton(
