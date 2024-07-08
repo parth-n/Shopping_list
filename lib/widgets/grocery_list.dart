@@ -58,7 +58,7 @@ class _GroceryListState extends State<GroceryList> {
     }
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Your Grocery List'),
+          title: const Text('Your List'),
           actions: [
             IconButton(
                 onPressed: _addItem, icon: const Icon(Icons.add_box_rounded))
